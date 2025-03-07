@@ -29,4 +29,4 @@ The E-Library Management System is a comprehensive digital platform designed to 
   A flexible review model allows customers to review both books and libraries.
   Each review includes ratings, comments, and timestamps, impacting the overall rating of the book/library.
 
-![UML-Klasse - Seite 2 (1)](https://github.com/user-attachments/assets/602dd90a-2de6-4254-a374-68509172f908)
+![UML](https://github.com/user-attachments/assets/c2fa86d6-752a-4aa8-b3b7-4faac5c173e0)

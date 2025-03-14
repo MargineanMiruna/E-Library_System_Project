@@ -1,17 +1,13 @@
 package app.e_library.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
-import java.util.List;
+import lombok.*;
 
 @Getter
 @Setter
-@ToString
 @Entity
-@Table
+@Table(name = "Books")
 public class Book {
     @Id
     @SequenceGenerator(
@@ -24,25 +20,35 @@ public class Book {
             generator = "book_sequence"
     )
     private Long id;
+    @JsonProperty("title")
     private String title;
-    private List<String> authors;
+    @JsonProperty("authors")
+    private String authors;
+    @JsonProperty("publishingHouse")
     private String publishingHouse;
+    @JsonProperty("isbn")
     private String isbn;
+    @JsonProperty("releaseYear")
     private Integer releaseYear;
+    @JsonProperty("description")
     private String description;
+    @JsonProperty("language")
     private String language;
+    @JsonProperty("coverImage")
     private String coverImage;
     @ManyToOne
     @JoinColumn(name = "library_id")
+    @JsonProperty("library_id")
     private Library library;
+    @JsonProperty("available")
     private Boolean available;
+    @JsonProperty("rating")
     private Float rating;
 
+    public Book() {
+    }
 
-    public Book() {}
-
-    public Book(Long id, String title, List<String> authors, String publishingHouse, String isbn, Integer releaseYear, String description, String language, String coverImage, Library library, Boolean available, Float rating) {
-        this.id = id;
+    public Book(String title, String authors, String publishingHouse, String isbn, Integer releaseYear, String description, String language, String coverImage, Library library, Boolean available, Float rating) {
         this.title = title;
         this.authors = authors;
         this.publishingHouse = publishingHouse;
@@ -56,7 +62,8 @@ public class Book {
         this.rating = rating;
     }
 
-    public Book(String title, List<String> authors, String publishingHouse, String isbn, Integer releaseYear, String description, String language, String coverImage, Library library, Boolean available, Float rating) {
+    public Book(Long id, String title, String authors, String publishingHouse, String isbn, Integer releaseYear, String description, String language, String coverImage, Library library, Boolean available, Float rating) {
+        this.id = id;
         this.title = title;
         this.authors = authors;
         this.publishingHouse = publishingHouse;

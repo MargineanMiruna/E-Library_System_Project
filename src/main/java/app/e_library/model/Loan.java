@@ -1,17 +1,15 @@
 package app.e_library.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Getter
 @Setter
-@ToString
 @Entity
-@Table
+@Table(name = "Loans")
 public class Loan {
     @Id
     @SequenceGenerator(
@@ -26,19 +24,23 @@ public class Loan {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "customer_id")
+    @JsonProperty("customer_id")
     private Customer customer;
     @ManyToOne
     @JoinColumn(name = "book_id")
+    @JsonProperty("book_id")
     private Book book;
+    @JsonProperty("loanDate")
     private LocalDate loanDate;
+    @JsonProperty("returnDate")
     private LocalDate returnDate;
+    @JsonProperty("status")
     private String status;
 
     public Loan() {
     }
 
-    public Loan(Long id, Customer customer, Book book, LocalDate loanDate, LocalDate returnDate, String status) {
-        this.id = id;
+    public Loan(Customer customer, Book book, LocalDate loanDate, LocalDate returnDate, String status) {
         this.customer = customer;
         this.book = book;
         this.loanDate = loanDate;
@@ -46,7 +48,8 @@ public class Loan {
         this.status = status;
     }
 
-    public Loan(Customer customer, Book book, LocalDate loanDate, LocalDate returnDate, String status) {
+    public Loan(Long id, Customer customer, Book book, LocalDate loanDate, LocalDate returnDate, String status) {
+        this.id = id;
         this.customer = customer;
         this.book = book;
         this.loanDate = loanDate;

@@ -1,17 +1,15 @@
 package app.e_library.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Getter
 @Setter
-@ToString
 @Entity
-@Table
+@Table(name = "Customers")
 public class Customer implements User{
     @Id
     @SequenceGenerator(
@@ -24,14 +22,29 @@ public class Customer implements User{
             generator = "customer_sequence"
     )
     private Long id;
+    @JsonProperty("firstName")
     private String firstName;
+    @JsonProperty("lastName")
     private String lastName;
+    @JsonProperty("username")
     private String username;
+    @JsonProperty("email")
     private String email;
+    @JsonProperty("password")
     private String password;
+    @JsonProperty("birthDate")
     private LocalDate birthDate;
 
     public Customer() {
+    }
+
+    public Customer(String firstName, String lastName, String username, String email, String password, LocalDate birthDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.birthDate = birthDate;
     }
 
     public Customer(Long id, String firstName, String lastName, String username, String email, String password, LocalDate birthDate) {
@@ -44,42 +57,8 @@ public class Customer implements User{
         this.birthDate = birthDate;
     }
 
-    public Customer(String firstName, String lastName, String username, String email, String password, LocalDate birthDate) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.birthDate = birthDate;
-    }
-
     @Override
     public Long getId() {
-        return 0L;
-    }
-
-    @Override
-    public String getFirstName() {
-        return "";
-    }
-
-    @Override
-    public String getLastName() {
-        return "";
-    }
-
-    @Override
-    public String getUsername() {
-        return "";
-    }
-
-    @Override
-    public String getEmail() {
-        return "";
-    }
-
-    @Override
-    public String getPassword() {
-        return "";
+        return id;
     }
 }

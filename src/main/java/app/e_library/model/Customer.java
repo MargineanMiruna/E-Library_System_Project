@@ -5,21 +5,23 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @ToString
 @Entity
 @Table
-public class Admin implements User{
+public class Customer implements User{
     @Id
     @SequenceGenerator(
-            name = "admin_sequence",
-            sequenceName = "admin_sequence",
+            name = "customer_sequence",
+            sequenceName = "customer_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "admin_sequence"
+            generator = "customer_sequence"
     )
     private Long id;
     private String firstName;
@@ -27,54 +29,57 @@ public class Admin implements User{
     private String username;
     private String email;
     private String password;
+    private LocalDate birthDate;
 
-    public Admin() {
+    public Customer() {
     }
 
-    public Admin(Long id, String firstName, String lastName, String username, String email, String password) {
+    public Customer(Long id, String firstName, String lastName, String username, String email, String password, LocalDate birthDate) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.birthDate = birthDate;
     }
 
-    public Admin(String firstName, String lastName, String username, String email, String password) {
+    public Customer(String firstName, String lastName, String username, String email, String password, LocalDate birthDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.birthDate = birthDate;
     }
 
     @Override
     public Long getId() {
-        return id;
+        return 0L;
     }
 
     @Override
     public String getFirstName() {
-        return firstName;
+        return "";
     }
 
     @Override
     public String getLastName() {
-        return lastName;
+        return "";
     }
 
     @Override
     public String getUsername() {
-        return username;
+        return "";
     }
 
     @Override
     public String getEmail() {
-        return email;
+        return "";
     }
 
     @Override
     public String getPassword() {
-        return password;
+        return "";
     }
 }

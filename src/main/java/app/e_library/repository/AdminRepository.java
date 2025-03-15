@@ -1,6 +1,6 @@
 package app.e_library.repository;
 
-import app.e_library.model.Admin;
+import app.e_library.domain.Admin;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

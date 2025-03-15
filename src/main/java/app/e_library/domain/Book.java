@@ -1,4 +1,4 @@
-package app.e_library.model;
+package app.e_library.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;

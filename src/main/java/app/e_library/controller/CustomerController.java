@@ -1,6 +1,6 @@
 package app.e_library.controller;
 
-import app.e_library.model.Customer;
+import app.e_library.domain.Customer;
 import app.e_library.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/customer")
+@RequestMapping(path = "api/customer")
 public class CustomerController {
     public final CustomerService customerService;
 
@@ -32,7 +32,7 @@ public class CustomerController {
         return customerService.getCustomer(id);
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("/username/{username}")
     public Customer getCustomerByUsername(@PathVariable String username) {
         return customerService.getCustomer(username);
     }

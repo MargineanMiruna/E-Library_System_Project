@@ -1,7 +1,6 @@
 package app.e_library.service;
 
-import app.e_library.model.Admin;
-import app.e_library.model.Customer;
+import app.e_library.domain.Customer;
 import app.e_library.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

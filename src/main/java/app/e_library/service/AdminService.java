@@ -29,8 +29,13 @@ public class AdminService {
         return adminRepository.findById(id).orElse(null);
     }
 
-    public Admin getAdmin(String username) {
+    public Admin getAdminByUsername(String username) {
         Optional<Admin> admin = adminRepository.findByUsername(username);
+        return admin.orElse(null);
+    }
+
+    public Admin getAdminByEmail(String email) {
+        Optional<Admin> admin = adminRepository.findByEmail(email);
         return admin.orElse(null);
     }
 
@@ -40,5 +45,29 @@ public class AdminService {
 
     public void deleteAdmin(Long id) {
         adminRepository.deleteById(id);
+    }
+
+    public Long getId(Admin admin) {
+        return admin.getId();
+    }
+
+    public String getFirstName(Admin admin) {
+        return admin.getFirstName();
+    }
+
+    public String getLastName(Admin admin) {
+        return admin.getLastName();
+    }
+
+    public String getUsername(Admin admin) {
+        return admin.getUsername();
+    }
+
+    public String getEmail(Admin admin) {
+        return admin.getEmail();
+    }
+
+    public String getPassword(Admin admin) {
+        return admin.getPassword();
     }
 }

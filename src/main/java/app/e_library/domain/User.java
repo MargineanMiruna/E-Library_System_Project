@@ -1,5 +1,10 @@
 package app.e_library.domain;
 
 public interface User {
-    public Long getId();
+    Long getId();
+    String getFirstName();
+    String getLastName();
+    String getUsername();
+    String getEmail();
+    String getPassword();
 }

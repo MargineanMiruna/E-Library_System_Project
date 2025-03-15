@@ -33,8 +33,13 @@ public class AdminController {
     }
 
     @GetMapping("/username/{username}")
-    public Admin getAdmin(@PathVariable String username) {
-        return adminService.getAdmin(username);
+    public Admin getAdminByUsername(@PathVariable String username) {
+        return adminService.getAdminByUsername(username);
+    }
+
+    @GetMapping("/email/{email}")
+    public Admin getAdminByEmail(@PathVariable String email) {
+        return adminService.getAdminByEmail(email);
     }
 
     @PutMapping("/{id}")
